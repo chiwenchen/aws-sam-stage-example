@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Parameters:
+  SomeString:
+    Type: String
+Description: An example to demo deploy multiple stage
+Resources:
+  ExampleAPI:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: go1.x
+      Handler: main
+      Events:
+        RootHandler:
+          Type: Api
+          Properties:
+            Path: '/'
+            Method: get
+      Environment:
+        Variables:
+          SomeString: !Ref SomeString
