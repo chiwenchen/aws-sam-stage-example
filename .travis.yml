@@ -1,0 +1,24 @@
+language: go
+go:
+- 1.x
+branches:
+  only:
+  - develop
+  - master
+install:
+- pip install awscli
+- pip install aws-sam-cli
+deploy:
+  provider: script
+  script: sh deploy_prod.sh
+  skip_cleanup: true
+  on:
+    branch: master
+notifications:
+  email:
+    on_failure: always
+env:
+  global:
+  - AWS_DEFAULT_REGION=ap-southeast-1
+  - secure: jLgpJ1i3fomRHEpwO2lv72iFCH8qGeCKpKTNPrJrMiL5fIXI7W+OTLhXdn3lgMw1QdPdfBfN62pkl62SNnidKUm6ZyrAvcdE1KJTDjEFJ655WdIJs8uSjXvVuBONN4jmDwAXKwcKi9MeFOj0MIqMwSjjINf998aguhwggcn37gWuX1fJQ17uzUoL9LhknsZKEYzCKBTuZXPRYNr1fjolRuIXhDADwGgcq8mbiOCflZM5k4hev7IDo3CNHZC+A5HTYtxcfLRKgxQ75oYkREcYuwpcVAkdny1O7CkO2MvyYFbJcQYOWytr3SgI7iQddmb9ZMfXjhjtCOUqGM2uxZHMvUtFEsaRgw3zJ8SxgpmGi7GZShZGdtRU+8eIBAzPWo01IDnsu2VYiChJn1wsV+1qx0MpL9NdcuPGA6b0jKmURWqvg0SCNJfvF/8s0qGMM+QnObSZ01hVqvoUdWTMxN/ATE4MHbNxuM9fQWnZyXOgc2uFutZOAcK2r3Qm0Jw2g3lyX727pWB9i/yrhfMhshK8fpXHE8TmQvO2xwwMVzWMAto7tF2VQSrCkBgWyuerB9gYWCQiuS7s0QnPAJZ2TZE2OygiZLZyKZCUQsWtaSEQ0OfIfPvU+2hHKqGVAib010NCuGWzuxSs5RtSmT1OrQt/xD/HZgZ6Rb0n8PzWw8Hf8ow=
+  - secure: kX45H/2A3Wub8p7ehHs4A7wkF703uLK7Dte8eulsyFd1WxFzwMXDc016xVZbwGvrqk5Zz9EG3MJp/ndDfOZJnTq4RBFruwV6fwvb2PSa0zu6tAUtah/298d8/UMGWQD918BjHCLYxt82Khugo+oE8thiogRp6+zovXFiAJ87LNMUnWuCyhxKd4FeJYq+3QkoSVLbUXW2p4bfQd8K3QyvcblCi1kGz6O2lm1Cgs+gzFhJHhzDCoe2OVC4Qb1iklFJZa0Pg7mce8+JQ/L9ZW/L0254wbmzvksNJzV3TJwDY69dYHiT4XgKITYKmz5CoWjQUW5Fmr0IN3oQXx/2g+gM/XZ7cF+UYTPn10FUA5BJE3hgmMPou0rYtAgZMY1IYySX2Zm4oJJntavjg2xuosaxRy4AvIKLMLiVy0nEw73mTupSn4UdoncDopILTk9Z3JKrKmSdbdfK/hDnvyFjN6yDGAq5zTD+FVgTTnNYT+Mh0mASsH3kwc0u27X2ng9ymX9AKO9nW2Mbu0ORhgnDW1DjYSGxrlvxIF/FkBX8+6o5utPTxOrztkj5CItWzvpIA9urQCHvtXQMTvDIQRG8gf/YMigZf2i9NXxY8dO/D/zYoyZH8c7frA16+vhI/cjLFhNHOHYUPEWiOIDgqg48QODehgtVX1z7Mv68UtUBUYDs8hs=

@@ -10,3 +10,6 @@ aws cloudformation deploy --template-file $(pwd)/$output_template_file \
            --stack-name $stack_name \
            --capabilities CAPABILITY_IAM \
            --parameter-overrides  SomeString=hello_prod
+
+AKIAIPBUUL4TKUP6EVFQ
+hvYzDX1+kGksQZJQJKeHHm1hPbJPjjSVW5A+2s3cs
