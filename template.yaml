@@ -1,13 +1,15 @@
 AWSTemplateFormatVersion : '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Parameters:
-  SomeString:
+  DB:
     Type: String
 Description: An example to demo deploy multiple stage
 Resources:
   ExampleAPI:
+    FunctionName: ExampleLambda
     Type: AWS::Serverless::Function
     Properties:
+      Role: arn:aws:iam::274571492950:role/ssm_full_access
       Runtime: go1.x
       Handler: main
       Events:
@@ -16,6 +18,12 @@ Resources:
           Properties:
             Path: '/'
             Method: get
+        HelloHandler:
+          Type: Api
+          Properties:
+            Path: '/hello'
+            Method: get
       Environment:
         Variables:
-          SomeString: !Ref SomeString
+          DBConnection: !Ref DB
+          HELLO: hello from local
