@@ -5,13 +5,15 @@ branches:
   only:
   - develop
   - master
-install:
-- pip install awscli
-- pip install aws-sam-cli
 script:
-- docker run -v $(pwd):/lambda -it chiwenchen/lambda_go_deployer:version_1 /bin/bash
+- apt-get update
+- apt-get -y upgrade
+- sudo curl -O https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz
+- tar -xvf go1.9.1.linux-amd64.tar.gz
+- mv go /usr/local
+- echo "export PATH=~/.local/bin:\$PATH" >> .bash_profile
+- echo "export PATH=\$PATH:/usr/local/go/bin" >> .bash_profile
 - source .bash_profile
-- cd lambda
 - go get .
 - GOOS=linux go build -o main
 - sam package --template-file $(pwd)/template.yaml --s3-bucket $bucket --output-template-file $output_template_file
