@@ -24,7 +24,7 @@ notifications:
     on_failure: always
 env:
   global:
-  - AWS_DEFAULT_REGION=ap-southeast-1
+  - AWS_DEFAULT_REGION=us-east-1
   - bucket=ivan-sam-bucket-testing
   - output_template_file=serverless-output.yaml
   - stack_name=test-sns-service
