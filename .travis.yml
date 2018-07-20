@@ -8,11 +8,15 @@ branches:
 script:
 - apt-get update
 - apt-get -y upgrade
+- pip install awsci
+0 pip install -y aws-sam-cli
 - sudo curl -O https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz
 - tar -xvf go1.9.1.linux-amd64.tar.gz
 - mv go /usr/local
 - echo "export PATH=~/.local/bin:\$PATH" >> .bash_profile
 - echo "export PATH=\$PATH:/usr/local/go/bin" >> .bash_profile
+- echo "export GOPATH=\$HOME" >> .bash_profile
+- 
 - source .bash_profile
 - go get .
 - GOOS=linux go build -o main
