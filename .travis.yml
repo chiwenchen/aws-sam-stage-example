@@ -5,19 +5,18 @@ branches:
   only:
   - develop
   - master
-script:
-- apt-get update
-- apt-get -y upgrade
-- pip install awscli  --upgrade --user
+install:
+- pip install awscli
 - pip install -y aws-sam-cli
 - sudo curl -O https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz
 - tar -xvf go1.9.1.linux-amd64.tar.gz
-- mv go /usr/local
+- sudo mv go /usr/local
+script:
 - echo "export PATH=~/.local/bin:\$PATH" >> .bash_profile
 - echo "export PATH=\$PATH:/usr/local/go/bin" >> .bash_profile
 - echo "export GOPATH=\$HOME" >> .bash_profile
 - source .bash_profile
-- go get .
+- go get -d ./...
 - GOOS=linux go build -o main
 - sam package --template-file $(pwd)/template.yaml --s3-bucket $bucket --output-template-file $output_template_file
 deploy:
