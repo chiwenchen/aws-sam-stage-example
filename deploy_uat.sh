@@ -1,5 +1,5 @@
-bucket=ivan-sam-bucket-testing
-output_template_file=serverless-output.yaml
+bucket=ivan-sam-bucket-testing \
+output_template_file=serverless-output.yaml \
 stack_name=uat-sns-service
 
 GOOS=linux go build -o main

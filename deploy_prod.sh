@@ -1,5 +1,5 @@
-bucket=ivan-sam-bucket-testing
-output_template_file=serverless-output.yaml
+bucket=ivan-sam-bucket-testing \
+output_template_file=serverless-output.yaml \
 stack_name=prod-sns-service
 
 GOOS=linux go build -o main
@@ -9,7 +9,4 @@ sam package --template-file $(pwd)/template.yaml \
 aws cloudformation deploy --template-file $(pwd)/$output_template_file \
            --stack-name $stack_name \
            --capabilities CAPABILITY_IAM \
-           --parameter-overrides  SomeString=hello_prod
-
-AKIAIPBUUL4TKUP6EVFQ
-hvYzDX1+kGksQZJQJKeHHm1hPbJPjjSVW5A+2s3cs
+           --parameter-overrides  DB=Fack_DB_Conn
